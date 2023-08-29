@@ -12,15 +12,15 @@ use Drupal\group\Entity\GroupRelationshipInterface;
  * Implements hook_entity_type_alter().
  */
 function ggroup_entity_type_alter(array &$entity_types) {
-  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
-  // Add the subgroup creation wizard steps as entity forms.
-  $entity_types['group']->setFormClass('ggroup-form', 'Drupal\ggroup\Form\SubgroupFormStep1');
-
-  $entity_types['group_content']
-    ->setLinkTemplate('subgroup_add_form', '/group/{group}/subgroup/create/{group_type}')
-    ->setFormClass('ggroup-form', 'Drupal\ggroup\Form\SubgroupFormStep2')
-    // Make sure circular references cannot be created with subgroups.
-    ->addConstraint('GroupSubgroup');
+//  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
+//  // Add the subgroup creation wizard steps as entity forms.
+//  $entity_types['group']->setFormClass('ggroup-form', 'Drupal\ggroup\Form\SubgroupFormStep1');
+//
+//  $entity_types['group_content']
+//    ->setLinkTemplate('subgroup_add_form', '/group/{group}/subgroup/create/{group_type}')
+//    ->setFormClass('ggroup-form', 'Drupal\ggroup\Form\SubgroupFormStep2')
+//    // Make sure circular references cannot be created with subgroups.
+//    ->addConstraint('GroupSubgroup');
 }
 
 /**
