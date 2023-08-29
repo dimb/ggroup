@@ -1,0 +1,19 @@
+services:
+  access_check.ggroup.add:
+    class: Drupal\ggroup\Access\SubgroupAddAccessCheck
+    tags:
+      - { name: access_check, applies_to: _subgroup_add_access }
+
+  ggroup.group_graph_storage:
+    class: Drupal\ggroup\Graph\SqlGroupGraphStorage
+    arguments: ['@database']
+
+  ggroup.group_hierarchy_manager:
+    class: Drupal\ggroup\GroupHierarchyManager
+    arguments: ['@ggroup.group_graph_storage', '@entity_type.manager', '@group.membership_loader']
+
+  # Specific group relation handlers.
+  group.relation_handler.operation_provider.subgroup:
+    class: 'Drupal\ggroup\Plugin\Group\RelationHandler\SubgroupOperationProvider'
+    arguments: [ '@group.relation_handler.operation_provider']
+    shared: false
